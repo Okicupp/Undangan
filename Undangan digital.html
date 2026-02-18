@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan</title>
+    <style>
+        /* CSS Langsung di dalam file agar offline-ready */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f1ea;
+            color: #333;
+            text-align: center;
+        }
+
+        .cover {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('images/bg1.jpg'); /* Placeholder image */
+            background-size: cover;
+            background-position: center;
+	    background-repeat: no-repeat;
+            color: white;
+	    text-shadow: 2px 2px 4px rgba(0,0,0.5);
+        }
+
+        .content {
+            padding: 50px 20px;
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        h1 { font-family: 'Georgia', serif; font-size: 2.5em; margin-bottom: 10px; }
+        h2 { color: #8d6e63; }
+        .date { font-weight: bold; font-size: 1.2em; color: #5d4037; }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #8d6e63;
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            margin-top: 20px;
+        }
+
+        .section { margin-bottom: 40px; }
+        footer { padding: 20px; font-size: 0.8em; color: #777; }
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            padding: 15px;
+        }
+
+        .gallery-item {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        /* Lightbox sederhana untuk melihat foto lebih besar */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 80%;
+            border-radius: 5px;
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <div class="cover">
+        <h3>UNDANGAN PERNIKAHAN</h3>
+        <h1>Romeo & Juliet</h1>
+        <p>12 Desember 2026</p>
+        <a href="isi.html" class="btn">Buka Undangan</a>
+    </div>
+
+
+        
+
+</body>
+</html>
+
+
+
+
+    <script>
+        function kirimRSVP() {
+            // Ambil data dari form
+            const nama = document.getElementById('nama').value;
+            const status = document.getElementById('status').value;
+            const jumlah = document.getElementById('jumlah').value;
+            
+            // Nomor WhatsApp Anda (Ganti dengan nomor Anda, awali dengan 62)
+            const noWA = "6281234567890"; 
+
+            if(nama === "") {
+                alert("Mohon isi nama Anda.");
+                return;
+            }
+
+            // Susun teks pesan
+            const pesan = `Halo, saya *${nama}* ingin mengonfirmasi kehadiran.\n\n` +
+                          `Status: *${status}*\n` +
+                          `Jumlah Tamu: *${jumlah} orang*\n\n` +
+                          `Terima kasih!`;
+
+            // Encode pesan untuk URL
+            const url = `https://wa.me/${noWA}?text=${encodeURIComponent(pesan)}`;
+
+            // Buka link WhatsApp
+            window.open(url, '_blank');
+        }
+
+        function openLightbox(src) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox').style.display = 'flex';
+        }
+
+    </script>
+
